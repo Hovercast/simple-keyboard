@@ -1828,14 +1828,15 @@ class SimpleKeyboard {
              * Handle PointerEvents
              */
             buttonDOM.onpointerdown = (e: KeyboardHandlerEvent) => {
-              this.handleButtonClicked(button, e);
-              this.handleButtonMouseDown(button, e);
+              // this.handleButtonClicked(button, e);
+              // this.handleButtonMouseDown(button, e);
             };
             buttonDOM.onpointerup = (e: KeyboardHandlerEvent) => {
-              this.handleButtonMouseUp(button, e);
+              // this.handleButtonMouseUp(button, e);
+              this.handleButtonClicked(button, e);
             };
             buttonDOM.onpointercancel = (e: KeyboardHandlerEvent) => {
-              this.handleButtonMouseUp(button, e);
+              // this.handleButtonMouseUp(button, e);
             };
           } else {
             /**
@@ -1866,24 +1867,25 @@ class SimpleKeyboard {
                  * This fires handler before onKeyReleased, therefore when that option is set we will fire the handler
                  * in onmousedown instead
                  */
-                if (typeof this.options.onKeyReleased !== "function") {
-                  this.handleButtonClicked(button, e);
-                }
+                // if (typeof this.options.onKeyReleased !== "function") {
+                //   this.handleButtonClicked(button, e);
+                // }
               };
               buttonDOM.onmousedown = (e: KeyboardHandlerEvent) => {
                 /**
                  * Fire button handler for onKeyReleased use-case
                  */
-                if (
-                  typeof this.options.onKeyReleased === "function" &&
-                  !this.isMouseHold
-                ) {
-                  this.handleButtonClicked(button, e);
-                }
-                this.handleButtonMouseDown(button, e);
+                // if (
+                //   typeof this.options.onKeyReleased === "function" &&
+                //   !this.isMouseHold
+                // ) {
+                //   this.handleButtonClicked(button, e);
+                // }
+                // this.handleButtonMouseDown(button, e);
               };
               buttonDOM.onmouseup = (e: KeyboardHandlerEvent) => {
                 this.handleButtonMouseUp(button, e);
+                this.handleButtonClicked(button, e);
               };
             }
           }
